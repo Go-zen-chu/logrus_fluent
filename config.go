@@ -3,7 +3,7 @@ package logrus_fluent
 import (
 	"time"
 
-	"github.com/fluent/fluent-logger-golang/fluent"
+	"github.com/keymantics/fluent-logger-golang/fluent"
 	"github.com/sirupsen/logrus"
 )
 
@@ -19,7 +19,7 @@ type Config struct {
 	DefaultFilters        map[string]func(interface{}) interface{}
 
 	// from fluent.Config
-	// see https://github.com/fluent/fluent-logger-golang/blob/master/fluent/fluent.go
+	// see https://github.com/keymantics/fluent-logger-golang/blob/master/fluent/fluent.go
 	FluentNetwork      string
 	FluentSocketPath   string
 	Timeout            time.Duration
