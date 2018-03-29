@@ -1,6 +1,10 @@
 package logrus_fluent
 
 import (
+	"errors"
+	"fmt"
+	"time"
+
 	"github.com/keymantics/fluent-logger-golang/fluent"
 	"github.com/sirupsen/logrus"
 )
@@ -178,6 +182,9 @@ func (hook *FluentHook) Fire(entry *logrus.Entry) error {
 
 	fluentData := ConvertToValue(data, TagName)
 	err = logger.PostWithTime(tag, entry.Time, fluentData)
+	if err != nil {
+		err = errors.New(fmt.Sprintf("[%s] error while posting to fluentd: %s", time.Now().String(), err.Error()))
+	}
 	return err
 }
 
